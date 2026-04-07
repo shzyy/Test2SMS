@@ -4,47 +4,22 @@ using System.Text;
 
 namespace Test
 {
-    internal class Auto
+    public class Auto
     {
-        string Mark { get; set; }
-        string KutseKulu { get; set; }
-        string PagisOnKutsus { get; set; }
+        public string Mudel { get; set; }
+        public double KutuseKulu { get; set; } // l / 100km
+        public double PaagisOnKutust { get; set; }
 
-        int Soiduulatus;
-        int Aasta;
-
-
-
-        public Auto(string mark, double kulu, double pagis)
+        public Auto(string mudel, double kutuseKulu, double paagisOnKutust)
         {
-            Mark = mark;
-            KutseKulu = kulu;
-            PagisOnKutsus = pagis;
+            Mudel = mudel;
+            KutuseKulu = kutuseKulu;
+            PaagisOnKutust = paagisOnKutust;
         }
 
-        public double Soiduulatus()
+        public double ArvutaSoiduulatus()
         {
-            return PagisOnKutsus / KutseKulu * 100;
-        }
-
-        public static void benzo()
-        {
-            List<Auto> filmid = new List<Auto>()
-        {
-            new Auto{"BMW", 1998,  6.4},
-            new Auto{"Toyota", 1997,  7.2},
-            new Auto{"Mercedes", 2009,  8.0 },
-            new Auto{"Audi", 2019, 7.1},
-            new Auto{"Škoda", 2022, 6.5 }
-        };
-
-            Auto parim = Autod[0];
-            foreach (var a in Autod)
-            {
-
-            }
+            return (PaagisOnKutust / KutuseKulu) * 100;
         }
     }
-
-}
 }

@@ -1,36 +1,54 @@
 ﻿namespace Test
 {
-    internal class StartPage
+    using System;
+
+    class StartPage
     {
         static void Main(string[] args)
         {
-            while (true)
+            bool töötab = true;
+
+            while (töötab)
             {
-                Console.WriteLine("\n=== MENÜÜ ===");
-                Console.WriteLine("1 - lisamisrežiimFailidega");
-                Console.WriteLine("2 - Dictionary");
-                Console.WriteLine("3 - StreamReader");
-                Console.WriteLine("4 - Auto");
+                Console.WriteLine("\n--- MENÜÜ ---");
+                Console.WriteLine("1 - Kirjuta logi");
+                Console.WriteLine("2 - Riigi otsing");
+                Console.WriteLine("3 - Loe ja arvuta");
+                Console.WriteLine("4 - Halda autosid");
                 Console.WriteLine("0 - Välju");
 
+                Console.Write("Valik: ");
                 string valik = Console.ReadLine();
+
                 switch (valik)
                 {
                     case "1":
-                        lisamisrežiim.lisamisrežiim();
+                        Console.Write("Sisesta logi teade: ");
+                        string teade = Console.ReadLine();
+                        AndmeFunktsioonid.KirjutaLogi(teade);
                         break;
-                    case "2":
-                        RiigiOtsing.RiigiOtsing();
-                        break;
-                    case "3":
-                        StreamReader.StreamReaderMeetod();
-                        break;
-                    case "4":
-                        Auto.AutoMeetod();
-                        break;
-                    case "0":
-                        return;
 
+                    case "2":
+                        AndmeFunktsioonid.RiigiOtsing();
+                        break;
+
+                    case "3":
+                        var tulemus = AndmeFunktsioonid.LoeJaArvuta();
+                        Console.WriteLine($"Summa: {tulemus.Item1}");
+                        Console.WriteLine($"Keskmine: {tulemus.Item2}");
+                        break;
+
+                    case "4":
+                        AndmeFunktsioonid.HaldaAutosid();
+                        break;
+
+                    case "0":
+                        töötab = false;
+                        break;
+
+                    default:
+                        Console.WriteLine("Vale valik!");
+                        break;
                 }
             }
         }
